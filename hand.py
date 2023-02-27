@@ -1,5 +1,6 @@
 from card import Card
+
+
 class Hand:
-    def __init__(self, card1: Card, card2: Card):
-        self.card1 = card1
-        self.card2 = card2
+    def __init__(self, player_cards: tuple(Card)):
+        self.player_cards = player_cards
