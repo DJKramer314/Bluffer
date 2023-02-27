@@ -1,9 +1,7 @@
 from card import Card
-class Deck:
 
-    def __str__(self):
-        for card in self.deck:
-            print(card)
+
+class Deck:
 
     def __init__(self) -> None:
         deck: list[Card] = []
@@ -15,3 +13,8 @@ class Deck:
                 deck.append(Card(value, suit))
 
         self.deck = deck
+
+
+new_deck = Deck()
+for card in new_deck.deck:
+    print(card)
