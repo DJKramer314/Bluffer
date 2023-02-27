@@ -10,6 +10,6 @@ class Deck:
 
         for suit in suits:
             for value in values:
-                deck.append(Card(value, suit))
+                deck.append(Card(suit, value))
 
         self.deck = deck

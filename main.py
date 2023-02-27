@@ -3,12 +3,11 @@ from card import Card
 from deck import Deck
 
 
-table = (Card(5, "Hearts"),
-         Card(5, "Hearts"),
-         Card(5, "Hearts"),
-         Card(5, "Hearts"))
+table = (Card("Hearts", 5),
+         Card("Hearts", 5),
+         Card("Hearts", 5),
+         Card("Hearts", 5))
 
-hand = (Card(5, "Hearts"), Card(5, "Hearts"))
+hand = (Card("Hearts", 5), Card("Hearts", 5))
 
 game = PokerGame(hand, table)
-print(game.calculate_winning_odds())
