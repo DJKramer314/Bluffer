@@ -13,8 +13,3 @@ class Deck:
                 deck.append(Card(value, suit))
 
         self.deck = deck
-
-
-new_deck = Deck()
-for card in new_deck.deck:
-    print(card)

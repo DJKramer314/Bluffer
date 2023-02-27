@@ -3,7 +3,6 @@ from hand import Hand
 
 
 class PokerGame:
-
     def __init__(self,
                  hand: Hand,
                  table: tuple(Card) = ()):
