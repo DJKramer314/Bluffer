@@ -3,17 +3,18 @@ class Card:
     def __str__(self):
         return f"The {self.value} of {self.suit}"
 
+    # None is specified here to allow for an optional construcor argument
     def __init__(self, string: str, value: int = None):
 
         if value:
-            # This only occurs if a card value is specified in the initialization of the Card object
+            # This only occurs if a card string and value is specified in the constructor
             # While a string may also include a value, it is not known until the else statement
             # This method, while slightly hard to read, is the only way that I can overload the constructor
             self.value = value
             self.suit = string
 
         else:
-            # This spot is reached when only a string is specified in the constructor
+            # This spot is only reached when a string and not a value is specified in the constructor
             # The string must be in the format "AB" where A = 2-10 or J Q K, and B = s, c, h, or d for the suit
             suit_string = ""
 
