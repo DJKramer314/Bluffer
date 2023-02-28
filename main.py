@@ -2,9 +2,10 @@ from pokergame import PokerGame
 from card import Card
 
 
-def get_user_hand():
+def get_user_hand() -> tuple[Card]:
     user_string = input("Enter your hand: ")
     card_strings = user_string.split(" ")
+    # Length of hand must be exactly two so that calculations can occur
     if len(card_strings) == 2:
         pass
     else:
@@ -24,14 +25,16 @@ def get_user_hand():
     return (card_one, card_two)
 
 
-def get_table_cards():
+def get_table_cards() -> tuple[Card]:
     table_string = input("Enter table cards: ")
 
+    # Allow for the user to skip this step, as it is not required.
     if table_string == "":
         return ()
 
     card_strings = table_string.split(" ")
-    if len(card_strings) < 5:
+    # The table cards can be anything from 0 to 5, but not greater
+    if len(card_strings) <= 5:
         pass
     else:
         print(
