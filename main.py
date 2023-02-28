@@ -40,6 +40,7 @@ def get_table_cards():
         return get_table_cards()
     cards = []
     try:
+        # Will go to the except part of the conditional if Card(card_string) does not make a valid card
         for card_string in card_strings:
             cards.append(Card(card_string))
         else:
@@ -55,4 +56,5 @@ def get_table_cards():
 hand = get_user_hand()
 table = get_table_cards()
 
+# This game will be instantiated with valid inputs no matter what if the program gets to this point
 game = PokerGame(hand, table)
