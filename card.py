@@ -1,7 +1,13 @@
 class Card:
+    """
+    In short, a 'Card' object is a type that holds a value and a suit. A value can consist of any integer between 2-14 inclusive and
+    a suit is the type of that card, which can be one of the following: Hearts, Diamonds, Clubs, Spades.
+    """
 
     def __str__(self):
-        # This variable is either a number (2-10) or a full name of a card, such as 'King'
+        """ Returns a nicely formatted sentence string that explains the card details in english """
+
+        # This variable is either a number (2-10) or a full name of a card, such as 'King.' It is the value of the card.
         name: str
 
         # This conditional is for special names for the face cards and Ace
@@ -34,6 +40,12 @@ class Card:
             self.value, self.suit = formatted_input[0], formatted_input[1]
 
     def format_input(self, input: str) -> tuple:
+        """ 
+        The input should already by validated by this point, will crash otherwise.
+        This function will format the text into a tuple of (value, suit) where
+        value is a number between 2 and 14 and suit is one of the 4 suits specified in the dictionary. 
+        """
+
         value: int = input[0:-1]  # A number (2-10) or a letter (A, K, Q, J)
         suit: str = input[-1]  # A letter (s, c, h, d)
 
