@@ -46,8 +46,6 @@ def get_table_cards() -> tuple[Card]:
         # Will go to the except part of the conditional if Card(card_string) does not make a valid card
         for card_string in card_strings:
             cards.append(Card(card_string))
-        else:
-            pass
     except:
         print("Invalid input(s). Please try again")
         # Repeat through recursion
