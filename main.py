@@ -24,6 +24,35 @@ def get_user_hand():
     return (card_one, card_two)
 
 
+def get_table_cards():
+    table_string = input("Enter table cards: ")
+
+    if table_string == "":
+        return ()
+
+    card_strings = table_string.split(" ")
+    if len(card_strings) < 5:
+        pass
+    else:
+        print(
+            f"Too many inputs. Expected 5 or less, but received {len(card_strings)}.")
+        # Repeat through recursion
+        return get_table_cards()
+    cards = []
+    try:
+        for card_string in card_strings:
+            cards.append(Card(card_string))
+        else:
+            pass
+    except:
+        print("Invalid input(s). Please try again")
+        # Repeat through recursion
+        return get_table_cards()
+
+    return tuple(cards)
+
+
 hand = get_user_hand()
-for card in hand:
-    print(card)
+table = get_table_cards()
+
+game = PokerGame(hand, table)
