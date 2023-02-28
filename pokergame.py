@@ -16,11 +16,13 @@ class PokerGame:
         return_string += "Cards on the table: \n"
         for card in self.table:
             return_string += " - " + str(card) + "\n"
+        return_string += f"Number of players: {self.number_of_players}"
         return return_string
 
     def __init__(self,
                  hand: tuple[Card],
-                 table: tuple[Card] = ()):
+                 table: tuple[Card],
+                 number_of_players: int):
         """
         This init constructor takes in two arguments, a 'hand' and a 'table.'
         The 'hand' object is assumed to be a tuple[Card] of length 2.
@@ -28,6 +30,7 @@ class PokerGame:
         """
         self.hand = hand
         self.table = table
+        self.number_of_players = number_of_players
 
         self.deck = self.create_deck()
 

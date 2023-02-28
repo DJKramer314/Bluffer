@@ -54,10 +54,25 @@ def get_table_cards() -> tuple[Card]:
     return tuple(cards)
 
 
+def get_number_of_players():
+    user_input = input("How many players are playing including you?: ")
+    try:
+        if int(user_input) >= 2 and int(user_input) <= 8:
+            pass
+        else:
+            print("That number is invalid. Please choose a number between 2 and 8.")
+            return get_number_of_players()
+    except:
+        print("Input was not a number. Please try again")
+        return get_number_of_players()
+    return user_input
+
+
 hand = get_user_hand()
 table = get_table_cards()
+number_of_players = get_number_of_players()
 
 # This game will be instantiated with valid inputs no matter what if the program gets to this point
-game = PokerGame(hand, table)
+game = PokerGame(hand, table, number_of_players)
 
 print(game)
