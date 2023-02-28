@@ -3,6 +3,12 @@ from card import Card
 
 class PokerGame:
 
+    """
+    The PokerGame class is designed to keep all of the data related to a game of poker. It can
+    store a player's hand, the table's cards, and the deck of cards as a whole. This app is designed to calculate the odds from
+    a single player's perspective, but will be allowed in the future to calculate given multiple hands.
+    """
+
     def __str__(self):
         return_string = "Cards in your hand: \n"
         for card in self.hand:
