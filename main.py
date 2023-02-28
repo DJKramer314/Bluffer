@@ -59,3 +59,5 @@ table = get_table_cards()
 
 # This game will be instantiated with valid inputs no matter what if the program gets to this point
 game = PokerGame(hand, table)
+
+print(game)

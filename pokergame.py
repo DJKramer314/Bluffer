@@ -3,6 +3,15 @@ from card import Card
 
 class PokerGame:
 
+    def __str__(self):
+        return_string = "Cards in your hand: \n"
+        for card in self.hand:
+            return_string += " - " + str(card) + "\n"
+        return_string += "Cards on the table: \n"
+        for card in self.table:
+            return_string += " - " + str(card) + "\n"
+        return return_string
+
     def __init__(self,
                  hand: tuple[Card],
                  table: tuple[Card] = ()):
