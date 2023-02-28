@@ -1,6 +1,5 @@
 from pokergame import PokerGame
 from card import Card
-from deck import Deck
 
 
 table = (Card("Hearts", 5),

@@ -9,5 +9,17 @@ class PokerGame:
         self.hand = hand
         self.table = table
 
+        self.deck = self.create_deck()
+
+    def create_deck(self):
+        deck: list[Card] = []
+        suits = ("Hearts", "Diamonds", "Spades", "Clubs")
+        values = (2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)
+
+        for suit in suits:
+            for value in values:
+                deck.append(Card(suit, value))
+        return deck
+
     def calculate_winning_odds(self) -> float:
         return 1.0
