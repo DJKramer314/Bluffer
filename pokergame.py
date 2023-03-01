@@ -69,7 +69,7 @@ class PokerGame:
 
         combined_hand = list(hand) + list(table)
 
-        def has_flush():
+        def has_flush() -> bool:
             """
             This method determines in the combined_hand variable contains cards that are considered to
             be a Flush. This is done by counting the suits and determining if there are more than 5
@@ -85,13 +85,12 @@ class PokerGame:
             suit_counts = [0, 0, 0, 0]
             for card in combined_hand:
                 suit_counts[suit_indices[card.suit]] += 1
-            print(suit_counts)
             for count in suit_counts:
                 if count >= 5:
                     return True
             return False
 
-        def has_straight():
+        def has_straight() -> bool:
             """
             This method determines if the combined_hand variable contains cards that can be considered
             a straight. It does this by determining all of the combinations of sets of values that result
@@ -118,3 +117,80 @@ class PokerGame:
                 if len(values.intersection(straight)) == 5:
                     return True
             return False
+
+        def has_of_a_kind(number) -> int:
+            """
+            This method determines if the given cards have any _ of a kinds and if so, how many of them.
+            It does this by counting the number of each card in a dictionary, similar to the flush method.
+            Then, it determines which ones have exactly the number of cards specified by my input into the function.
+
+            Example usage:
+            number_of_four_of_a_kinds = has(of_a_kind(4))
+            """
+
+            number_of_solutions = 0
+
+            card_counts = {
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0,
+                11: 0,
+                12: 0,
+                13: 0,
+                14: 0,
+            }
+
+            for card in combined_hand:
+                card_counts[card.value] += 1
+
+            for value in card_counts:
+                if card_counts[value] == number:
+                    number_of_solutions += 1
+
+            return number_of_solutions
+
+        # Begin main part of function
+
+        if has_flush() and has_straight():
+            # It is possible to have a straight flush or a royal flush
+            # -TODO Finish this logic
+            return 10
+        # It is NOT possible to have a straight flush or a royal flush OR it has been passed to this point after
+        # determining that we do not have either
+
+        # Detect for four-of-a-kind
+        if has_of_a_kind(4) == 1:
+            return 8
+
+        # Detect for full house
+        if has_of_a_kind(3) >= 1 and has_of_a_kind(2) >= 1:
+            return 7
+
+        # Detect for flush
+        if has_flush():
+            return 6
+
+        # Detect for straight
+        if has_straight():
+            return 5
+
+        # Detect for three-of-a-kind
+        if has_of_a_kind(3) == 1:
+            return 4
+
+        # Detect for two-pair
+        if has_of_a_kind(2) == 2:
+            return 3
+
+        # Detect for one-pair
+        if has_of_a_kind(2) == 1:
+            return 2
+
+        # Otherwise, high card
+        return 1
