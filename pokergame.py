@@ -49,5 +49,38 @@ class PokerGame:
                 deck.append(Card(suit, value))
         return tuple(deck)
 
-    def calculate_winning_odds(self) -> float:
-        return 1.0
+    def determine_hand(hand: tuple[Card], table: tuple[Card]) -> int:
+        """
+        This method is intended to test for hands and table cards that are already 2 and 5 cards respectively.
+        These cards should already be created and put into tuples before the calling of this method. This method will return a 'rank'
+        value between 1 and 10.
+        The rankings are as follows, with higher cards being of better rank: \n
+        1: High Card \n
+        2: Pair \n
+        3: Two Pair \n
+        4: Three of a Kind \n
+        5: Straight \n
+        6: Flush \n
+        7: Full House \n
+        8: Four of a Kind \n
+        9: Straight Flush \n
+        10: Royal Flush \n
+        """
+
+        combined_hand = list(hand + table)
+
+        def has_flush():
+            suit_indices = {
+                "Spades": 0,
+                "Hearts": 1,
+                "Diamonds": 2,
+                "Clubs": 3
+            }
+            # Format: [Spades, Hearts, Diamonds, Clubs]
+            suit_counts = [0, 0, 0, 0]
+            for card in combined_hand:
+                suit_counts[suit_indices[card.suit]] += 1
+            for count in suit_counts:
+                if count >= 5:
+                    return True
+            return False
