@@ -70,6 +70,11 @@ class PokerGame:
         combined_hand = list(hand) + list(table)
 
         def has_flush():
+            """
+            This method determines in the combined_hand variable contains cards that are considered to
+            be a Flush. This is done by counting the suits and determining if there are more than 5
+            cards in any given suit.
+            """
             suit_indices = {
                 "Spades": 0,
                 "Hearts": 1,
@@ -87,6 +92,11 @@ class PokerGame:
             return False
 
         def has_straight():
+            """
+            This method determines if the combined_hand variable contains cards that can be considered
+            a straight. It does this by determining all of the combinations of sets of values that result
+            in a straight and testing for each of them, since there are only 10 of them.
+            """
             values = set()
             for card in combined_hand:
                 values.add(card.value)
