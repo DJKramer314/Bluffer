@@ -67,7 +67,7 @@ class PokerGame:
         10: Royal Flush \n
         """
 
-        combined_hand = list(hand + table)
+        combined_hand = list(hand) + list(table)
 
         def has_flush():
             suit_indices = {
@@ -80,7 +80,31 @@ class PokerGame:
             suit_counts = [0, 0, 0, 0]
             for card in combined_hand:
                 suit_counts[suit_indices[card.suit]] += 1
+            print(suit_counts)
             for count in suit_counts:
                 if count >= 5:
+                    return True
+            return False
+
+        def has_straight():
+            values = set()
+            for card in combined_hand:
+                values.add(card.value)
+
+            straight_lists = (
+                {14, 2, 3, 4, 5},
+                {2, 3, 4, 5, 6},
+                {3, 4, 5, 6, 7},
+                {4, 5, 6, 7, 8},
+                {5, 6, 7, 8, 9},
+                {6, 7, 8, 9, 10},
+                {7, 8, 9, 10, 11},
+                {8, 9, 10, 11, 12},
+                {9, 10, 11, 12, 13},
+                {10, 11, 12, 13, 14},
+            )
+
+            for straight in straight_lists:
+                if len(values.intersection(straight)) == 5:
                     return True
             return False
