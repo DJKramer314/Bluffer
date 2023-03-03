@@ -95,9 +95,10 @@ class PokerGame:
                         3: "Clubs"
                     }
                     return (True, suit_names[index])
-            return (False)
+            # 0 is a placeholder, as it will never be accessed if not used
+            return (False, 0)
 
-        def has_straight(card_list) -> bool:
+        def has_straight(card_list=combined_hand) -> bool:
             """
             This method determines if the combined_hand variable contains cards that can be considered
             a straight. It does this by determining all of the combinations of sets of values that result

@@ -74,4 +74,18 @@ number_of_players = get_number_of_players()
 
 # This game will be instantiated with valid inputs no matter what if the program gets to this point
 game = PokerGame(hand, table, number_of_players)
-game.determine_hand()
+
+outcomes = {
+    1: "High Card",
+    2: "Pair",
+    3: "Two Pair",
+    4: "Three of a Kind",
+    5: "Straight",
+    6: "Flush",
+    7: "Full House",
+    8: "Four of a Kind",
+    9: "Straight Flush",
+    10: "Royal Flush"
+}
+
+print(f"Your outcome: {outcomes[game.determine_hand()]}")
