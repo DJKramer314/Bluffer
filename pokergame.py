@@ -49,7 +49,7 @@ class PokerGame:
                 deck.append(Card(suit, value))
         return tuple(deck)
 
-    def determine_hand(hand: tuple[Card], table: tuple[Card]) -> int:
+    def determine_hand(self) -> int:
         """
         This method is intended to test for hands and table cards that are already 2 and 5 cards respectively.
         These cards should already be created and put into tuples before the calling of this method. This method will return a 'rank'
@@ -67,7 +67,7 @@ class PokerGame:
         10: Royal Flush \n
         """
 
-        combined_hand = list(hand) + list(table)
+        combined_hand = list(self.hand) + list(self.table)
 
         def has_flush() -> tuple:
             """

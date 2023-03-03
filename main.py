@@ -74,5 +74,4 @@ number_of_players = get_number_of_players()
 
 # This game will be instantiated with valid inputs no matter what if the program gets to this point
 game = PokerGame(hand, table, number_of_players)
-
-print(game)
+game.determine_hand()
