@@ -14,7 +14,7 @@ def test1():
 # - No flushes
 
 
-def generate_hand_values_with_no_pairs_or_straights() -> set[set[int]]:
+def generate_hand_values_for_high_card() -> set[set[int]]:
     hands_list = set()
     for value1 in range(2, 15):
         for value2 in range(2, 15):
@@ -51,6 +51,6 @@ def generate_hand_values_with_no_pairs_or_straights() -> set[set[int]]:
     return hands_list
 
 
-hands_list = generate_hand_values_with_no_pairs_or_straights()
+hands_list = generate_hand_values_for_high_card()
 for hand in list[hands_list]:
     print(hand)
