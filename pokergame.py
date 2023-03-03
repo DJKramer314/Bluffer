@@ -167,9 +167,10 @@ class PokerGame:
 
         if has_flush() and has_straight():
             if has_straight_flush():
-                return 9
-            elif has_royal_flush():
-                return 10
+                if has_royal_flush():
+                    return 10
+                else:
+                    return 9
             else:
                 pass
         # It is NOT possible to have a straight flush or a royal flush OR it has been passed to this point after
