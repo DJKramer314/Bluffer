@@ -69,11 +69,12 @@ class PokerGame:
 
         combined_hand = list(hand) + list(table)
 
-        def has_flush() -> bool:
+        def has_flush() -> tuple:
             """
             This method determines in the combined_hand variable contains cards that are considered to
             be a Flush. This is done by counting the suits and determining if there are more than 5
-            cards in any given suit.
+            cards in any given suit. The return value will be a boolean followed by the suit that the 
+            flush is considered in
             """
             suit_indices = {
                 "Spades": 0,
@@ -85,19 +86,25 @@ class PokerGame:
             suit_counts = [0, 0, 0, 0]
             for card in combined_hand:
                 suit_counts[suit_indices[card.suit]] += 1
-            for count in suit_counts:
-                if count >= 5:
-                    return True
-            return False
+            for index in range(4):
+                if suit_counts[index] >= 5:
+                    suit_names = {
+                        0: "Spades",
+                        1: "Hearts",
+                        2: "Diamonds",
+                        3: "Clubs"
+                    }
+                    return (True, suit_names[index])
+            return (False)
 
-        def has_straight() -> bool:
+        def has_straight(card_list) -> bool:
             """
             This method determines if the combined_hand variable contains cards that can be considered
             a straight. It does this by determining all of the combinations of sets of values that result
             in a straight and testing for each of them, since there are only 10 of them.
             """
             values = set()
-            for card in combined_hand:
+            for card in card_list:
                 values.add(card.value)
 
             straight_lists = (
@@ -155,26 +162,37 @@ class PokerGame:
 
             return number_of_solutions
 
-        def has_straight_flush():
-            # -TODO Populate this method
-            return True
+        def has_straight_or_royal_flush() -> tuple:
 
-        def has_royal_flush():
-            # -TODO Populate this method
-            return True
+            suit = has_flush()[1]
+
+            flush_cards: set[Card] = set()
+
+            for card in combined_hand:
+                if card.suit == suit:
+                    flush_cards.add(card)
+
+            if has_straight(tuple(flush_cards)):
+                values = set()
+                for flush_card in flush_cards:
+                    values.add(flush_card.value)
+                if len(values.intersection({10, 11, 12, 13, 14})) == 5:
+                    return (True, True)
+                else:
+                    return (True, False)
+            else:
+                return (False, False)
 
         # Begin main part of function
 
-        if has_flush() and has_straight():
-            if has_straight_flush():
-                if has_royal_flush():
-                    return 10
-                else:
-                    return 9
+        if has_flush()[0] and has_straight(combined_hand):
+            outcome = has_straight_or_royal_flush()
+            if outcome[0] and outcome[1]:
+                return 10
+            elif outcome[0]:
+                return 9
             else:
                 pass
-        # It is NOT possible to have a straight flush or a royal flush OR it has been passed to this point after
-        # determining that we do not have either
 
         # Detect for four-of-a-kind
         if has_of_a_kind(4) == 1:
@@ -185,7 +203,7 @@ class PokerGame:
             return 7
 
         # Detect for flush
-        if has_flush():
+        if has_flush()[0]:
             return 6
 
         # Detect for straight
