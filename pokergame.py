@@ -155,12 +155,23 @@ class PokerGame:
 
             return number_of_solutions
 
+        def has_straight_flush():
+            # -TODO Populate this method
+            return True
+
+        def has_royal_flush():
+            # -TODO Populate this method
+            return True
+
         # Begin main part of function
 
         if has_flush() and has_straight():
-            # It is possible to have a straight flush or a royal flush
-            # -TODO Finish this logic
-            return 10
+            if has_straight_flush():
+                return 9
+            elif has_royal_flush():
+                return 10
+            else:
+                pass
         # It is NOT possible to have a straight flush or a royal flush OR it has been passed to this point after
         # determining that we do not have either
 
