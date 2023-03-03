@@ -22,7 +22,7 @@ class PokerGame:
     def __init__(self,
                  hand: tuple[Card],
                  table: tuple[Card],
-                 number_of_players: int):
+                 number_of_players: int = 2):
         """
         This init constructor takes in two arguments, a 'hand' and a 'table.'
         The 'hand' object is assumed to be a tuple[Card] of length 2.
