@@ -181,10 +181,10 @@ class PokerGame:
                     flush_cards.add(card)
 
             if has_straight(tuple(flush_cards)):
-                values = set()
+                flush_card_values = set()
                 for flush_card in flush_cards:
-                    values.add(flush_card.value)
-                if len(values.intersection({10, 11, 12, 13, 14})) == 5:
+                    flush_card_values.add(flush_card.value)
+                if len(flush_card_values.intersection({10, 11, 12, 13, 14})) == 5:
                     return (True, True)
                 else:
                     return (True, False)
