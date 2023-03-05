@@ -69,7 +69,7 @@ class PokerGame:
 
         combined_hand = list(self.hand) + list(self.table)
 
-        def has_flush() -> tuple:
+        def has_flush() -> tuple[bool, str]:
             """
             This method determines in the combined_hand variable contains cards that are considered to
             be a Flush. This is done by counting the suits and determining if there are more than 5
@@ -96,7 +96,7 @@ class PokerGame:
                     }
                     return (True, suit_names[index])
             # 0 is a placeholder, as it will never be accessed if not used
-            return (False, 0)
+            return (False, "No Suit")
 
         def has_straight(card_list=combined_hand) -> bool:
             """
@@ -163,7 +163,7 @@ class PokerGame:
 
             return number_of_solutions
 
-        def has_straight_or_royal_flush() -> tuple:
+        def has_straight_or_royal_flush() -> tuple[bool, bool]:
             """
             This method determines if the 'current_hand' variable in this class contains
             a straight flush or a royal flush. It does this by computing the cards that are involved in the flush, and then
