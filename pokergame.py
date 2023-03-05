@@ -164,7 +164,14 @@ class PokerGame:
             return number_of_solutions
 
         def has_straight_or_royal_flush() -> tuple:
-
+            """
+            This method determines if the 'current_hand' variable in this class contains
+            a straight flush or a royal flush. It does this by computing the cards that are involved in the flush, and then
+            determining if those cards contain a straight. This method outputs a tuple of two boolean values. The first, being
+            the outcome of Straight Flush and the second being the output of Royal Flush. For example, if the output is (True, True),
+            This means that there is both a straight flush and a royal flush. Due to the nature of these hands, if there is a royal
+            flush, there must also be a straight flush.
+            """
             suit = has_flush()[1]
 
             flush_cards: set[Card] = set()
