@@ -186,7 +186,7 @@ class PokerGame:
 
         # Begin main part of function
 
-        if has_flush()[0] and has_straight(combined_hand):
+        if has_flush()[0] and has_straight():
             outcome = has_straight_or_royal_flush()
             if outcome[0] and outcome[1]:
                 return 10
