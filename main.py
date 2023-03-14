@@ -2,7 +2,7 @@ from pokergame import PokerGame
 from card import Card
 
 
-def get_user_hand() -> tuple[Card]:
+def get_user_hand() -> list[Card]:
     user_string = input("Enter your hand: ")
     card_strings = user_string.split(" ")
     # Length of hand must be exactly two so that calculations can occur
@@ -22,15 +22,15 @@ def get_user_hand() -> tuple[Card]:
         # Repeat through recursion
         return get_user_hand()
 
-    return (card_one, card_two)
+    return [card_one, card_two]
 
 
-def get_table_cards() -> tuple[Card]:
+def get_table_cards() -> list[Card]:
     table_string = input("Enter table cards: ")
 
     # Allow for the user to skip this step, as it is not required.
     if table_string == "":
-        return ()
+        return []
 
     card_strings = table_string.split(" ")
     # The table cards can be anything from 0 to 5, but not greater
@@ -51,10 +51,10 @@ def get_table_cards() -> tuple[Card]:
         # Repeat through recursion
         return get_table_cards()
 
-    return tuple(cards)
+    return cards
 
 
-def get_number_of_players():
+def get_number_of_players() -> int:
     user_input = input("How many players are playing including you?: ")
     try:
         if int(user_input) >= 2 and int(user_input) <= 8:
@@ -68,9 +68,14 @@ def get_number_of_players():
     return user_input
 
 
-hand = get_user_hand()
-table = get_table_cards()
-number_of_players = get_number_of_players()
+def get_inputs():
+    hand = get_user_hand()
+    table = get_table_cards()
+    number_of_players = get_number_of_players()
+    return hand, table, number_of_players
+
+
+hand, table, number_of_players = get_inputs()
 
 # This game will be instantiated with valid inputs no matter what if the program gets to this point
 game = PokerGame(hand, table, number_of_players)
