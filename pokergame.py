@@ -160,7 +160,7 @@ class PokerGame:
             Then, it determines which ones have exactly the number of cards specified by my input into the function.
 
             Example usage:
-            number_of_four_of_a_kinds = has(of_a_kind(4))
+            number_of_four_of_a_kinds = has_of_a_kind(4)
             """
 
             number_of_solutions = 0
