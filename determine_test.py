@@ -14,71 +14,225 @@ from card import Card
 #         10: Royal Flush \n
 
 
-def test1():
-    hand = (Card("2s"), Card("3h"))
-    table = ()
+def test_royal_flush_s():
+    hand = (Card("10s"), Card("Js"))
+    table = (Card("Qs"), Card("Ks"), Card("As"), )
     game = PokerGame(hand, table)
-    assert game.determine_hand() == 1
+    assert game.determine_hand() == 10
 
 
-def test2():
-    hand = (Card("2s"), Card("2h"))
-    table = ()
+def test_royal_flush_d():
+    hand = (Card("10d"), Card("Jd"))
+    table = (Card("Qd"), Card("Kd"), Card("Ad"), )
     game = PokerGame(hand, table)
-    assert game.determine_hand() == 2
+    assert game.determine_hand() == 10
 
 
-def test3():
-    hand = (Card("2s"), Card("2h"))
-    table = (Card("3s"), Card("3h"))
+def test_royal_flush_c():
+    hand = (Card("10c"), Card("Jc"))
+    table = (Card("Qc"), Card("Kc"), Card("Ac"), )
     game = PokerGame(hand, table)
-    assert game.determine_hand() == 3
+    assert game.determine_hand() == 10
 
 
-def test4():
-    hand = (Card("2s"), Card("2h"))
-    table = (Card("2d"),)
+def test_royal_flush_h():
+    hand = (Card("10h"), Card("Jh"))
+    table = (Card("Qh"), Card("Kh"), Card("Ah"), )
     game = PokerGame(hand, table)
-    assert game.determine_hand() == 4
+    assert game.determine_hand() == 10
 
 
-def test5():
-    hand = (Card("2s"), Card("3h"))
-    table = (Card("4d"), Card("5h"), Card("6c"))
-    game = PokerGame(hand, table)
-    assert game.determine_hand() == 5
-
-
-def test6():
-    hand = (Card("2h"), Card("4h"))
-    table = (Card("6h"), Card("8h"), Card("10h"))
-    game = PokerGame(hand, table)
-    assert game.determine_hand() == 6
-
-
-def test7():
-    hand = (Card("2h"), Card("2s"))
-    table = (Card("3d"), Card("3s"), Card("3h"))
-    game = PokerGame(hand, table)
-    assert game.determine_hand() == 7
-
-
-def test8():
-    hand = (Card("2h"), Card("2s"))
-    table = (Card("2d"), Card("2c"))
-    game = PokerGame(hand, table)
-    assert game.determine_hand() == 8
-
-
-def test9():
-    hand = (Card("2h"), Card("3h"))
-    table = (Card("4h"), Card("5h"), Card("6h"))
+def test_straight_flush_s_2_to_6():
+    hand = (Card("2s"), Card("3s"))
+    table = (Card("4s"), Card("5s"), Card("6s"), )
     game = PokerGame(hand, table)
     assert game.determine_hand() == 9
 
 
-def test10():
-    hand = (Card("10h"), Card("Jh"))
-    table = (Card("Qh"), Card("Kh"), Card("Ah"))
+def test_straight_flush_d_2_to_6():
+    hand = (Card("2d"), Card("3d"))
+    table = (Card("4d"), Card("5d"), Card("6d"), )
     game = PokerGame(hand, table)
-    assert game.determine_hand() == 10
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_c_2_to_6():
+    hand = (Card("2c"), Card("3c"))
+    table = (Card("4c"), Card("5c"), Card("6c"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_h_2_to_6():
+    hand = (Card("2h"), Card("3h"))
+    table = (Card("4h"), Card("5h"), Card("6h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_s_3_to_7():
+    hand = (Card("3s"), Card("4s"))
+    table = (Card("5s"), Card("6s"), Card("7s"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_d_3_to_7():
+    hand = (Card("3d"), Card("4d"))
+    table = (Card("5d"), Card("6d"), Card("7d"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_c_3_to_7():
+    hand = (Card("3c"), Card("4c"))
+    table = (Card("5c"), Card("6c"), Card("7c"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_h_3_to_7():
+    hand = (Card("3h"), Card("4h"))
+    table = (Card("5h"), Card("6h"), Card("7h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_s_4_to_8():
+    hand = (Card("4s"), Card("5s"))
+    table = (Card("6s"), Card("7s"), Card("8s"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_d_4_to_8():
+    hand = (Card("4d"), Card("5d"))
+    table = (Card("6d"), Card("7d"), Card("8d"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_c_4_to_8():
+    hand = (Card("4c"), Card("5c"))
+    table = (Card("6c"), Card("7c"), Card("8c"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_h_4_to_8():
+    hand = (Card("4h"), Card("5h"))
+    table = (Card("6h"), Card("7h"), Card("8h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_s_5_to_9():
+    hand = (Card("5s"), Card("6s"))
+    table = (Card("7s"), Card("8s"), Card("9s"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_d_5_to_9():
+    hand = (Card("5d"), Card("6d"))
+    table = (Card("7d"), Card("8d"), Card("9d"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_c_5_to_9():
+    hand = (Card("5c"), Card("6c"))
+    table = (Card("7c"), Card("8c"), Card("9c"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_h_5_to_9():
+    hand = (Card("5h"), Card("6h"))
+    table = (Card("7h"), Card("8h"), Card("9h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_s_6_to_10():
+    hand = (Card("6s"), Card("7s"))
+    table = (Card("8s"), Card("9s"), Card("10s"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_d_6_to_10():
+    hand = (Card("6d"), Card("7d"))
+    table = (Card("8d"), Card("9d"), Card("10d"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_c_6_to_10():
+    hand = (Card("6c"), Card("7c"))
+    table = (Card("8c"), Card("9c"), Card("10c"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_h_6_to_10():
+    hand = (Card("6h"), Card("7h"))
+    table = (Card("8h"), Card("9h"), Card("10h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_s_7_to_11():
+    hand = (Card("7s"), Card("8s"))
+    table = (Card("9s"), Card("10s"), Card("Js"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_d_7_to_11():
+    hand = (Card("7d"), Card("8d"))
+    table = (Card("9d"), Card("10d"), Card("Jd"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_c_7_to_11():
+    hand = (Card("7c"), Card("8c"))
+    table = (Card("9c"), Card("10c"), Card("Jc"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_h_7_to_11():
+    hand = (Card("7h"), Card("8h"))
+    table = (Card("9h"), Card("10h"), Card("Jh"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_s_8_to_12():
+    hand = (Card("8s"), Card("9s"))
+    table = (Card("10s"), Card("Js"), Card("Qs"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_d_8_to_12():
+    hand = (Card("8d"), Card("9d"))
+    table = (Card("10d"), Card("Jd"), Card("Qd"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_c_8_to_12():
+    hand = (Card("8c"), Card("9c"))
+    table = (Card("10c"), Card("Jc"), Card("Qc"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
+
+
+def test_straight_flush_h_8_to_12():
+    hand = (Card("8h"), Card("9h"))
+    table = (Card("10h"), Card("Jh"), Card("Qh"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 9
