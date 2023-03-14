@@ -236,3 +236,94 @@ def test_straight_flush_h_8_to_12():
     table = (Card("10h"), Card("Jh"), Card("Qh"), )
     game = PokerGame(hand, table)
     assert game.determine_hand() == 9
+
+
+def test_four_of_a_kind_2():
+    hand = (Card("2s"), Card("2d"))
+    table = (Card("2c"), Card("2h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
+
+
+def test_four_of_a_kind_3():
+    hand = (Card("3s"), Card("3d"))
+    table = (Card("3c"), Card("3h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
+
+
+def test_four_of_a_kind_4():
+    hand = (Card("4s"), Card("4d"))
+    table = (Card("4c"), Card("4h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
+
+
+def test_four_of_a_kind_5():
+    hand = (Card("5s"), Card("5d"))
+    table = (Card("5c"), Card("5h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
+
+
+def test_four_of_a_kind_6():
+    hand = (Card("6s"), Card("6d"))
+    table = (Card("6c"), Card("6h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
+
+
+def test_four_of_a_kind_7():
+    hand = (Card("7s"), Card("7d"))
+    table = (Card("7c"), Card("7h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
+
+
+def test_four_of_a_kind_8():
+    hand = (Card("8s"), Card("8d"))
+    table = (Card("8c"), Card("8h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
+
+
+def test_four_of_a_kind_9():
+    hand = (Card("9s"), Card("9d"))
+    table = (Card("9c"), Card("9h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
+
+
+def test_four_of_a_kind_10():
+    hand = (Card("10s"), Card("10d"))
+    table = (Card("10c"), Card("10h"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
+
+
+def test_four_of_a_kind_J():
+    hand = (Card("Js"), Card("Jd"))
+    table = (Card("Jc"), Card("Jh"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
+
+
+def test_four_of_a_kind_Q():
+    hand = (Card("Qs"), Card("Qd"))
+    table = (Card("Qc"), Card("Qh"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
+
+
+def test_four_of_a_kind_K():
+    hand = (Card("Ks"), Card("Kd"))
+    table = (Card("Kc"), Card("Kh"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
+
+
+def test_four_of_a_kind_A():
+    hand = (Card("As"), Card("Ad"))
+    table = (Card("Ac"), Card("Ah"), )
+    game = PokerGame(hand, table)
+    assert game.determine_hand() == 8
