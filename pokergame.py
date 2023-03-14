@@ -198,6 +198,19 @@ class PokerGame:
             the outcome of Straight Flush and the second being the output of Royal Flush. For example, if the output is (True, True),
             This means that there is both a straight flush and a royal flush. Due to the nature of these hands, if there is a royal
             flush, there must also be a straight flush.
+
+            Example: 
+            combined_hand: 
+            - 2 of Spades
+            - 3 of Spades
+            - 4 of Spades
+            - 5 of Spades
+            - 6 of Spades
+            - 10 of Diamonds
+            - A of Clubs
+
+            Output:
+            [True, False] -> Which means that the combined_hand has a straight flush but not a royal flush
             """
             suit = find_flush_suit()
 
