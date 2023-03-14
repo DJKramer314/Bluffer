@@ -201,13 +201,14 @@ class PokerGame:
             """
             suit = find_flush_suit()
 
-            flush_cards: set[Card] = set()
+            # This is fine being a list because it should never contain duplicate cards based on the input
+            flush_cards: list[Card] = []
 
             for card in combined_hand:
                 if card.suit == suit:
-                    flush_cards.add(card)
+                    flush_cards.append(card)
 
-            if has_straight(tuple(flush_cards)):
+            if has_straight(flush_cards):
                 flush_card_values = set()
                 for flush_card in flush_cards:
                     flush_card_values.add(flush_card.value)
