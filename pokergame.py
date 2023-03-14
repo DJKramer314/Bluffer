@@ -69,12 +69,11 @@ class PokerGame:
 
         combined_hand = list(self.hand) + list(self.table)
 
-        def has_flush() -> tuple[bool, str]:
+        def has_flush() -> bool:
             """
             This method determines in the combined_hand variable contains cards that are considered to
             be a Flush. This is done by counting the suits and determining if there are more than 5
-            cards in any given suit. The return value will be a boolean followed by the suit that the 
-            flush is considered in
+            cards in any given suit. It will then return True or False based on the determination.
             """
             suit_indices = {
                 "Spades": 0,
@@ -82,7 +81,31 @@ class PokerGame:
                 "Diamonds": 2,
                 "Clubs": 3
             }
-            # Format: [Spades, Hearts, Diamonds, Clubs]
+            # Order: [Spades, Hearts, Diamonds, Clubs]
+            suit_counts = [0, 0, 0, 0]
+            for card in combined_hand:
+                suit_counts[suit_indices[card.suit]] += 1
+            for index in range(4):
+                if suit_counts[index] >= 5:
+                    return True
+
+            # If no flushes are found
+            return False
+
+        def find_flush_suit() -> str:
+            """
+            This method determines which suit a flush has happened in. To do this, similarly to the has_flush() method, it counts the
+            number of occurances of each suit, and returns the name of the suit that has more than 5 of it.
+
+            For example, find_flush_suit of a combined_hand of (5s, 9s, 3s, As, Ks, 10s, 7s) would be "Spades"
+            """
+            suit_indices = {
+                "Spades": 0,
+                "Hearts": 1,
+                "Diamonds": 2,
+                "Clubs": 3
+            }
+            # Order: [Spades, Hearts, Diamonds, Clubs]
             suit_counts = [0, 0, 0, 0]
             for card in combined_hand:
                 suit_counts[suit_indices[card.suit]] += 1
@@ -94,15 +117,19 @@ class PokerGame:
                         2: "Diamonds",
                         3: "Clubs"
                     }
-                    return (True, suit_names[index])
-            # 0 is a placeholder, as it will never be accessed if not used
-            return (False, "No Suit")
+                    return suit_names[index]
+
+            # If no flush is found within the cards
+            return "No Flush"
 
         def has_straight(card_list=combined_hand) -> bool:
             """
             This method determines if the combined_hand variable contains cards that can be considered
             a straight. It does this by determining all of the combinations of sets of values that result
             in a straight and testing for each of them, since there are only 10 of them.
+
+            This method takes an optional argument that allows you to test a certain set of cards for straight values.
+            This functionality is only used in the has_straight_or_royal_flush() method as of now.
             """
             values = set()
             for card in card_list:
@@ -172,7 +199,7 @@ class PokerGame:
             This means that there is both a straight flush and a royal flush. Due to the nature of these hands, if there is a royal
             flush, there must also be a straight flush.
             """
-            suit = has_flush()[1]
+            suit = find_flush_suit()
 
             flush_cards: set[Card] = set()
 
@@ -193,7 +220,7 @@ class PokerGame:
 
         # Begin main part of function
 
-        if has_flush()[0] and has_straight():
+        if has_flush() and has_straight():
             outcome = has_straight_or_royal_flush()
             if outcome[0] and outcome[1]:
                 return 10
@@ -211,7 +238,7 @@ class PokerGame:
             return 7
 
         # Detect for flush
-        if has_flush()[0]:
+        if has_flush():
             return 6
 
         # Detect for straight
